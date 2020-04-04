@@ -13,12 +13,16 @@ shell_startup() {
     echo -e "${BLUE_COLOR}Starting ${SHELL}...${NO_COLOR}"
 }
 
-function current_folder_files_count() {
-    FILES_COUNT=$(ls -lah | wc -l)
+current_folder_files_count() {
+    FILES_COUNT=$(ls -haltr | wc -l)
     echo "${GREEN_COLOR}Total files count in current folder: ${FILES_COUNT}. ${NO_COLOR}" | xargs
 }
 
-function extended_list_directory() {
-    ls -lah
+extended_list_directory() {
+    ls -haltr
     current_folder_files_count
+}
+
+time_info() {
+    ./shell/time.swift
 }
