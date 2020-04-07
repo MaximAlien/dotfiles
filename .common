@@ -10,7 +10,7 @@ NO_COLOR="\033[m"
 
 # Functions
 shell_startup() {
-    echo -e "${BLUE_COLOR}Starting ${SHELL}...${NO_COLOR}"
+    echo -e "${CYAN_COLOR}Starting ${SHELL}...${NO_COLOR}"
 }
 
 current_folder_files_count() {
@@ -25,4 +25,8 @@ extended_list_directory() {
 
 time_info() {
     ./shell/time.swift
+}
+
+color() {
+    "$@" | sed "s#test#$(echo -e $GREEN_COLOR)test$(echo -e $NO_COLOR)#g"
 }
