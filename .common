@@ -8,19 +8,34 @@ PURPLE_COLOR="\033[0;35m"
 BROWN_COLOR="\033[0;33m"
 NO_COLOR="\033[m"
 
+# Formatting
+BOLD="\033[1m"
+NO_BOLD="\033[0m"
+REVERSE="\e[7m"
+NO_REVERSE="\e[27m"
+
+# wc - word, line, character, and byte count
+# xargs - construct argument list(s) and execute utility
+
 # Functions
 shell_startup() {
     echo -e "${CYAN_COLOR}Starting ${SHELL}...${NO_COLOR}"
 }
 
-current_folder_files_count() {
-    FILES_COUNT=$(ls -haltr | wc -l)
-    echo "${GREEN_COLOR}Total files count in current folder: ${FILES_COUNT}. ${NO_COLOR}" | xargs
+current_folder_info() {
+    ITEMS_COUNT=$(ls -haltr | wc -l)
+    echo "${GREEN_COLOR}Total number of items in current folder: ${ITEMS_COUNT}. ${NO_COLOR}" | xargs
+
+    FILES_COUNT=$(find . -mindepth 1 -maxdepth 1 -type f | wc -l)
+    echo "${GREEN_COLOR}Total number of files in current folder: ${FILES_COUNT}. ${NO_COLOR}" | xargs
+
+    FOLDERS_COUNT=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
+    echo "${GREEN_COLOR}Total number of folders in current folder: ${FOLDERS_COUNT}. ${NO_COLOR}" | xargs
 }
 
 extended_list_directory() {
     ls -haltr
-    current_folder_files_count
+    current_folder_info
 }
 
 time_info() {
@@ -28,5 +43,19 @@ time_info() {
 }
 
 color() {
-    "$@" | sed "s#test#$(echo -e $GREEN_COLOR)test$(echo -e $NO_COLOR)#g"
+    QUERY="$1"
+    shift
+    "$@" | sed "s#$QUERY#$(echo $GREEN_COLOR)$QUERY$(echo $NO_COLOR)#g"
+}
+
+search_all() {
+    SEARCH_TERM="$1"
+    FILE_SEARCH_RESULT=$(color $SEARCH_TERM find . -type f -maxdepth 1 -iname "*$SEARCH_TERM*" -print)
+    FILE_SEARCH_RESULT_COUNT=$(echo $FILE_SEARCH_RESULT | wc -l | xargs)
+
+    if [[ $FILE_SEARCH_RESULT ]]; then
+        echo "Found $GREEN_COLOR$REVERSE$FILE_SEARCH_RESULT_COUNT$NO_REVERSE$NO_COLOR files:\n$FILE_SEARCH_RESULT"
+    else
+        echo "No files were found which contain: $SEARCH_TERM."
+    fi
 }
