@@ -23,14 +23,19 @@ shell_startup() {
 }
 
 current_folder_info() {
+    # h - when used with the -l option, use unit suffixes: Byte, Kilobyte, Megabyte, Gigabyte, Terabyte
+    # a - include directory entries whose names begin with a dot
+    # l - total sum for all the file sizes is output on a line before the long listing
+    # t - sort by time modified
+    # r - reverse the order of the sort to get reverse lexicographical order or the oldest entries first
     ITEMS_COUNT=$(ls -haltr | wc -l)
-    echo "${GREEN_COLOR}Total number of items in current folder: ${ITEMS_COUNT}. ${NO_COLOR}" | xargs
+    echo "Total number of items in current folder:${GREEN_COLOR}${ITEMS_COUNT}${NO_COLOR}." | xargs
 
     FILES_COUNT=$(find . -mindepth 1 -maxdepth 1 -type f | wc -l)
-    echo "${GREEN_COLOR}Total number of files in current folder: ${FILES_COUNT}. ${NO_COLOR}" | xargs
+    echo "Total number of files in current folder:${GREEN_COLOR}${FILES_COUNT}${NO_COLOR}." | xargs
 
     FOLDERS_COUNT=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
-    echo "${GREEN_COLOR}Total number of folders in current folder: ${FOLDERS_COUNT}. ${NO_COLOR}" | xargs
+    echo "Total number of folders in current folder:${GREEN_COLOR}${FOLDERS_COUNT}${NO_COLOR}." | xargs
 }
 
 extended_list_directory() {
@@ -57,5 +62,27 @@ search_all() {
         echo "Found $GREEN_COLOR$REVERSE$FILE_SEARCH_RESULT_COUNT$NO_REVERSE$NO_COLOR files:\n$FILE_SEARCH_RESULT"
     else
         echo "No files were found which contain: $SEARCH_TERM."
+    fi
+
+    FOLDER_SEARCH_RESULT=$(color $SEARCH_TERM find . -type d -maxdepth 1 -iname "*$SEARCH_TERM*" -print)
+    FOLDER_SEARCH_RESULT_COUNT=$(echo $FOLDER_SEARCH_RESULT | wc -l | xargs)
+
+    if [[ $FOLDER_SEARCH_RESULT ]]; then
+        echo "Found $GREEN_COLOR$REVERSE$FOLDER_SEARCH_RESULT_COUNT$NO_REVERSE$NO_COLOR folders:\n$FOLDER_SEARCH_RESULT"
+    else
+        echo "No folders were found which contain: $SEARCH_TERM."
+    fi
+
+    # -s - silent mode
+    # -i - ignore case
+    # -I - ignore binary files
+    # -n - show line number
+    CONTENT_SEARCH_RESULT=$(grep -siIn "$SEARCH_TERM" *)
+    CONTENT_SEARCH_RESULT_COUNT=$(echo $CONTENT_SEARCH_RESULT | wc -l | xargs)
+
+    if [[ $CONTENT_SEARCH_RESULT ]]; then
+        echo "Found $GREEN_COLOR$REVERSE$CONTENT_SEARCH_RESULT_COUNT$NO_REVERSE$NO_COLOR occurences in files content:\n$FOLDER_SEARCH_RESULT"
+    else
+        echo "No matches were found for: $SEARCH_TERM."
     fi
 }
