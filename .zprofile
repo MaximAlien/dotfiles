@@ -1,6 +1,5 @@
-source .bashrc
+PS1='%/ %# '
 
-export PS1="$ "
 export GREP_OPTIONS='--color=auto'
 # 4 - underline
 # 92 - green color
