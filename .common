@@ -44,11 +44,11 @@ extended_list_directory() {
 }
 
 time_info() {
-    ./.shell/time.swift
+    ~/.shell/time.swift
 }
 
 disk_info() {
-    ./.shell/disk_info.swift
+    ~/.shell/disk_info.swift
 }
 
 color() {
