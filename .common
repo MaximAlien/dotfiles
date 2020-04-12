@@ -44,7 +44,11 @@ extended_list_directory() {
 }
 
 time_info() {
-    ./shell/time.swift
+    ./.shell/time.swift
+}
+
+disk_info() {
+    ./.shell/disk_info.swift
 }
 
 color() {
@@ -77,11 +81,11 @@ search_all() {
     # -i - ignore case
     # -I - ignore binary files
     # -n - show line number
-    CONTENT_SEARCH_RESULT=$(grep -siIn "$SEARCH_TERM" *)
+    CONTENT_SEARCH_RESULT=$(color $SEARCH_TERM grep -siIn "$SEARCH_TERM" *)
     CONTENT_SEARCH_RESULT_COUNT=$(echo $CONTENT_SEARCH_RESULT | wc -l | xargs)
 
     if [[ $CONTENT_SEARCH_RESULT ]]; then
-        echo "Found $GREEN_COLOR$REVERSE$CONTENT_SEARCH_RESULT_COUNT$NO_REVERSE$NO_COLOR occurences in files content:\n$FOLDER_SEARCH_RESULT"
+        echo "Found $GREEN_COLOR$REVERSE$CONTENT_SEARCH_RESULT_COUNT$NO_REVERSE$NO_COLOR occurences in files content:\n$CONTENT_SEARCH_RESULT"
     else
         echo "No matches were found for: $SEARCH_TERM."
     fi
