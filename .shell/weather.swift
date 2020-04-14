@@ -14,32 +14,12 @@ class LocationController: NSObject, CLLocationManagerDelegate {
 
     func enableBasicLocationServices() {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        self.locationManager.distanceFilter = 100.0  // meters
+        self.locationManager.distanceFilter = 100.0 // meters
         self.locationManager.delegate = self
-        self.locationManager.startUpdatingLocation()
-
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            // Request when-in-use authorization initially
-            // self.locationManager.startUpdatingLocation()
-            break
-
-        case .restricted, .denied:
-            // Disable location features
-            break
-
-        case .authorizedWhenInUse, .authorizedAlways:
-            // Enable location features
-            break
-        @unknown default:
-            fatalError()
-        }
-
         self.locationManager.startUpdatingLocation()
     }
 
-    func locationManager(_ manager: CLLocationManager,
-                         didChangeAuthorization status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("\(#function)")
 
         switch status {
