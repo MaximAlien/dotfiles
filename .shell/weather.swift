@@ -9,10 +9,10 @@ class LocationController: NSObject, CLLocationManagerDelegate {
     override init() {
         super.init()
 
-        enableBasicLocationServices()
+        enableLocationServices()
     }
 
-    func enableBasicLocationServices() {
+    func enableLocationServices() {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager.distanceFilter = 100.0 // meters
         self.locationManager.delegate = self
@@ -21,25 +21,41 @@ class LocationController: NSObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("\(#function)")
-
+        
+        var authorizationStatus: String
         switch status {
-        case .restricted, .denied:
+        case .restricted:
+            authorizationStatus = "restricted"
             break
-
+            
+        case .denied:
+            authorizationStatus = "denied"
+            break
+            
         case .authorizedWhenInUse:
+            authorizationStatus = "authorizedWhenInUse"
             break
-
-        case .notDetermined, .authorizedAlways:
+            
+        case .notDetermined:
+            authorizationStatus = "notDetermined"
             break
+            
+        case .authorizedAlways:
+            authorizationStatus = "authorizedAlways"
+            break
+            
         @unknown default:
             fatalError()
         }
+        
+        print("Current location authorization status: \(authorizationStatus)")
     }
 
     func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation]) {
-        let lastLocation = locations.last!
-
-        print("Last location: \(lastLocation)")
+        let lastLocation = locations.last! as CLLocation
+        let locationCoordinate: CLLocationCoordinate2D = lastLocation.coordinate
+        
+        print("Latitude: \(locationCoordinate.latitude), Longitude: \(locationCoordinate.longitude)")
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
