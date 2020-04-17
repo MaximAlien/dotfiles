@@ -51,10 +51,24 @@ disk_info() {
     ~/.shell/disk_info.swift
 }
 
+weather() {
+    ~/.shell/weather.swift
+}
+
 color() {
     QUERY="$1"
     shift
-    "$@" | sed "s#$QUERY#$(echo $GREEN_COLOR)$QUERY$(echo $NO_COLOR)#g"
+
+    OS="$(uname)"
+    SED="sed"
+    if [[ $OS = "Darwin" ]]; then
+        # sed which is used on macOS doesn't support ignore case. Fix is to install: $ brew install gnu-sed
+        # I - ignore case
+        # -E - enable support for extended regular expressions, where there will be no need to escape ( and )
+        SED="gsed"
+    fi
+
+    "$@" | $SED -E "s#($QUERY)#$(echo -e $GREEN_COLOR)\1$(echo -e $NO_COLOR)#gI"
 }
 
 search_all() {
