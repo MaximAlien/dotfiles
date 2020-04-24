@@ -1,3 +1,3 @@
-source .common
+source ~/.common
 
 shell_startup

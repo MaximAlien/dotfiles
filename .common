@@ -35,19 +35,24 @@ current_folder_info() {
     # l - total sum for all the file sizes is output on a line before the long listing
     # t - sort by time modified
     # r - reverse the order of the sort to get reverse lexicographical order or the oldest entries first
-    ITEMS_COUNT=$(ls -haltr | wc -l)
+    ITEMS_COUNT=$(ls -haltr $1 | wc -l)
     echo "Total number of items in current folder:${GREEN_COLOR}${ITEMS_COUNT}${NO_COLOR}." | xargs
 
-    FILES_COUNT=$(find . -mindepth 1 -maxdepth 1 -type f | wc -l)
+    FILES_COUNT=$(find $1 -mindepth 1 -maxdepth 1 -type f | wc -l)
     echo "Total number of files in current folder:${GREEN_COLOR}${FILES_COUNT}${NO_COLOR}." | xargs
 
-    FOLDERS_COUNT=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
+    FOLDERS_COUNT=$(find $1 -mindepth 1 -maxdepth 1 -type d | wc -l)
     echo "Total number of folders in current folder:${GREEN_COLOR}${FOLDERS_COUNT}${NO_COLOR}." | xargs
 }
 
 extended_list_directory() {
-    ls -haltr
-    current_folder_info
+    FOLDER_PATH=$1
+    if [[ -n "$PATH" ]]; then
+        FOLDER_PATH=.
+    fi
+
+    ls -haltr $FOLDER_PATH
+    current_folder_info $FOLDER_PATH
 }
 
 time_info() {
@@ -58,7 +63,7 @@ disk_info() {
     ~/.shell/disk_info.swift
 }
 
-weather() {
+weather_info() {
     ~/.shell/weather.swift
 }
 
@@ -101,6 +106,7 @@ search_all() {
     # -i - ignore case
     # -I - ignore binary files
     # -n - show line number
+    # -r - recursive
     CONTENT_SEARCH_RESULT=$(color $SEARCH_TERM grep -siIn "$SEARCH_TERM" *)
     CONTENT_SEARCH_RESULT_COUNT=$(echo $CONTENT_SEARCH_RESULT | wc -l | xargs)
 

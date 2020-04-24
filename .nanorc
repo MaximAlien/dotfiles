@@ -1,2 +1,15 @@
 set tabsize 4
-# set tabstospaces
+set tabstospaces
+set linenumbers
+set mouse
+set showcursor
+set whitespace "»·"
+set autoindent
+set titlecolor black,green
+set selectedcolor black,cyan
+
+syntax "default"
+
+# [[:space:]]+$ - all whitespace at the end of the line
+# color <foreground>,<background>
+color ,green "[[:space:]]+$"

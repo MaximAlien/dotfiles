@@ -1,4 +1,4 @@
-alias ll=extended_list_directory
+alias ll="extended_list_directory"
 alias cd.="cd .."
 alias cd..="cd .."
 alias sb="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
@@ -8,4 +8,4 @@ alias time="time_info"
 alias help="man"
 alias search="search_all"
 alias di="disk_info"
-alias weather="weather"
+alias weather="weather_info"
