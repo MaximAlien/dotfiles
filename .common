@@ -47,7 +47,7 @@ current_folder_info() {
 
 extended_list_directory() {
     FOLDER_PATH=$1
-    if [[ -n "$PATH" ]]; then
+    if [[ -z "$FOLDER_PATH" ]]; then
         FOLDER_PATH=.
     fi
 
