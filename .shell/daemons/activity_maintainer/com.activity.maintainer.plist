@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+	</dict>
+	<key>Label</key>
+	<string>com.activity.maintainer</string>
+	<key>Program</key>
+	<string>/Users/maximmakhun/.shell/daemons/activity_maintainer/activity_maintainer.swift</string>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<false/>
+	<key>LaunchOnlyOnce</key>
+	<true/>
+	<key>StandardOutPath</key>
+	<string>/tmp/com.activity.maintainer/activity_maintainer_stdout.txt</string>
+	<key>StandardErrorPath</key>
+	<string>/tmp/com.activity.maintainer/activity_maintainer_stderr.txt</string>
+	<key>UserName</key>
+	<string>maximmakhun</string>
+	<key>GroupName</key>
+	<string>wheel</string>
+	<key>InitGroups</key>
+	<true/>
+</dict>
+</plist>
