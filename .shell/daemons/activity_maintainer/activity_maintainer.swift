@@ -24,9 +24,7 @@ var outputStream = StandardOutputStream()
 struct InactivityTracker {
     
     private var timeoutInterval: TimeInterval = 1.0
-    
     private var timer: Timer?
-    
     private var eventTypes: [CGEventType] = []
     
     enum InactivityTrackerError: Error {
@@ -63,15 +61,13 @@ struct InactivityTracker {
     }
 }
 
-class ActivityMaintainer {
+final class ActivityMaintainer {
     
     private var inactivityTracker = InactivityTracker()
-    
-    public let inactivityInterval: TimeInterval = 60.0
-    
-    public var mouseLocationRange: Range<Int> = -50..<50
-    
     private var lastActivityDate: Date? = nil
+    
+    public var inactivityInterval: TimeInterval = 60.0
+    public var mouseLocationRange: Range<Int> = -50..<50
     
     func start() {
         let eventTypes = [CGEventType.mouseMoved, CGEventType.leftMouseDown]
@@ -123,6 +119,8 @@ class ActivityMaintainer {
 let runLoop = CFRunLoopGetCurrent()
 
 let activityMaintainer = ActivityMaintainer()
+activityMaintainer.inactivityInterval = 120.0
+activityMaintainer.mouseLocationRange = -100..<100
 activityMaintainer.start()
 
 CFRunLoopRun()
