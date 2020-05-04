@@ -11,6 +11,3 @@ sudo chown root $LAUNCH_DAEMONS_DIR/$CONFIG_FILE_NAME
 sudo chgrp wheel $LAUNCH_DAEMONS_DIR/$CONFIG_FILE_NAME
 sudo chmod o-w $LAUNCH_DAEMONS_DIR/*
 launchctl load -w $LAUNCH_DAEMONS_DIR/$CONFIG_FILE_NAME
-
-# To unload deamon run:
-# launchctl unload -w $LAUNCH_DAEMONS_DIR/$CONFIG_FILE_NAME
