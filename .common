@@ -55,8 +55,8 @@ extended_list_directory() {
     current_folder_info $FOLDER_PATH
 }
 
-time_info() {
-    ~/.shell/time.swift
+date_info() {
+    ~/.shell/date_info.swift
 }
 
 disk_info() {
@@ -64,7 +64,7 @@ disk_info() {
 }
 
 weather_info() {
-    ~/.shell/weather.swift
+    ~/.shell/weather_info.swift
 }
 
 color() {

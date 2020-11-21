@@ -1,0 +1,1 @@
+void replace_output(int lines, const char *content);
