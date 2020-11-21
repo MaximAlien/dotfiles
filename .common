@@ -68,6 +68,11 @@ weather_info() {
 }
 
 color() {
+    if [[ $# == 0 ]]; then
+        echo "Example usage: $ color string_you_want_to_highlight ./your_command.sh"
+        return
+    fi
+
     QUERY="$1"
     shift
 
@@ -83,6 +88,11 @@ color() {
 }
 
 search_all() {
+    if [[ $# == 0 ]]; then
+        echo "Example usage: $ search string_you_are_looking_for"
+        return
+    fi
+
     SEARCH_TERM="$1"
     FILE_SEARCH_RESULT=$(color $SEARCH_TERM find . -type f -maxdepth 1 -iname "*$SEARCH_TERM*" -print)
     FILE_SEARCH_RESULT_COUNT=$(echo $FILE_SEARCH_RESULT | wc -l | xargs)
