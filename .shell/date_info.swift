@@ -43,7 +43,7 @@ let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { 
 
     print("\(fullDateString)", terminator: "")
     
-    if let output = execute("~/Desktop/a.out", args: ["5"]) {
+    if let output = execute("~/.shell/replace_output", args: ["5"]) {
         print("\(output)")
     }
 })
