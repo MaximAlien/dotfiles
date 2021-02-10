@@ -3,5 +3,7 @@ source .aliases
 
 shell_startup
 
-PROMPT="%/ %# "
-RPROMPT="%*"
+# PROMPT="%/ %# "
+# RPROMPT="%*"
+
+PROMPT='%~ $ '
