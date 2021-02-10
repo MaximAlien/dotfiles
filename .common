@@ -126,3 +126,21 @@ search_all() {
         echo "No matches were found for: $SEARCH_TERM."
     fi
 }
+
+git_branch_info() {
+    REPOSITORY_PATH="$(git rev-parse --show-toplevel 2> /dev/null)"
+    # basename, dirname - return filename or directory portion of pathname
+    REPOSITORY_NAME="$(basename "${REPOSITORY_PATH}")"
+    GIT_STATUS="$(git status 2> /dev/null)"
+    STATE="%B%F{76}clean%f%b"
+
+    if [[ ! ${GIT_STATUS} =~ "nothing to commit, working tree clean" ]]; then
+        STATE="%B%F{196}modified%f%b"
+    fi
+
+    PATTERN="On branch ([^[:space:]]*)"
+    if [[ ${GIT_STATUS} =~ ${PATTERN} ]]; then
+        GIT_BRANCH="%B%F{214}${match[1]}%f%b"
+        echo " (%B%F{39}${REPOSITORY_NAME}%f%b/${GIT_BRANCH}/${STATE})"
+    fi
+}
