@@ -52,5 +52,5 @@ google-chrome \
 
 for APPLICATION in ${APPLICATIONS[*]}
 do
-brew reinstall ${APPLICATION}
+    brew reinstall --cask ${APPLICATION}
 done
