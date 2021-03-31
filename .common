@@ -144,3 +144,17 @@ git_branch_info() {
         echo " (%B%F{39}${REPOSITORY_NAME}%f%b/${GIT_BRANCH}/${STATE})"
     fi
 }
+
+reset_xcode() {
+    killall Xcode
+    xcrun -k
+    xcodebuild -alltargets clean
+    rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
+    rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang.$(whoami)/ModuleCache"
+    rm -rf ~/Library/Developer/Xcode/DerivedData/*
+    rm -rf ~/Library/Caches/com.apple.dt.Xcode/*
+    rm -rf .build
+    swift package reset
+    swift package update
+    open /Applications/Xcode.app
+}
