@@ -15,6 +15,7 @@ DOTFILES=( \
 .zprofile \
 .zshrc \
 .gitconfig \
+.gitignore_global \
 )
 
 for DOTFILE in ${DOTFILES[*]}
