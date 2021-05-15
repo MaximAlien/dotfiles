@@ -3,3 +3,5 @@
     email = maxim.makhun@gmail.com
 [core]
     excludesfile = /Users/maximmakhun/.gitignore_global
+[commit]
+    template = /Users/maximmakhun/.gitcommit_template
