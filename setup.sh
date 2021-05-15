@@ -4,7 +4,18 @@ set -e
 set -x
 
 CURRENT_PATH="$(pwd)"
-DOTFILES=(.shell .aliases .bash_profile .bashrc .common .macos .nanorc .zprofile .zshrc)
+DOTFILES=( \
+.shell \
+.aliases \
+.bash_profile \
+.bashrc \
+.common \
+.macos \
+.nanorc \
+.zprofile \
+.zshrc \
+.gitconfig \
+)
 
 for DOTFILE in ${DOTFILES[*]}
 do

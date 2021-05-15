@@ -14,4 +14,4 @@ setopt PROMPT_SUBST
 # %f - reset to default color
 # %B - bold
 # %b - reset bold
-PROMPT='%~$(git_branch_info)$ '
+PROMPT='%~$(git_branch_info) $ '
