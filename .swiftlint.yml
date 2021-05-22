@@ -1,0 +1,17 @@
+disabled_rules:
+  # It's fine to have line length more than 120 symbols
+  - line_length
+
+  # It's fine to name variables with less than 3 symbols.
+  - identifier_name
+
+  # It's fine to have whitespace in empty line.
+  - trailing_whitespace
+
+opt_in_rules:
+  # There should not be more than 1 empty vertical line.
+  - vertical_whitespace
+
+  # There should be no semicolon at the end of the line. For example: 
+  # let testProperty = "test";
+  - trailing_semicolon

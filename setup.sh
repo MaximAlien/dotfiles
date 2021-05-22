@@ -17,6 +17,7 @@ DOTFILES=( \
 .gitconfig \
 .gitignore_global \
 .gitcommit_template \
+.swiftlint.yml \
 )
 
 for DOTFILE in ${DOTFILES[*]}
@@ -66,4 +67,13 @@ google-chrome \
 for APPLICATION in ${APPLICATIONS[*]}
 do
     brew reinstall --cask ${APPLICATION}
+done
+
+UTILITIES=( \
+swiftlint \
+)
+
+for UTILITIY in ${UTILITIES[*]}
+do
+    brew reinstall ${UTILITIY}
 done
