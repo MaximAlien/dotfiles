@@ -1,1 +1,14 @@
+# Remove auto-hide Dock delay
+defaults write com.apple.dock autohide-delay -float 0
 
+# Remove animation when hiding/showing the Dock
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+# Show indicator for currently running applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+# Minimize currently running applications to their icons
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Set the icon size of Dock items to 28 pixels
+defaults write com.apple.dock tilesize -int 28
