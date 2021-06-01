@@ -21,4 +21,7 @@ defaults write com.apple.finder AppleShowAllFiles -bool true
 # Shown file extensions in Finder
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
+# If searching in Finder, search only in current folder
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
 killall Finder
