@@ -12,3 +12,13 @@ defaults write com.apple.dock minimize-to-application -bool true
 
 # Set the icon size of Dock items to 28 pixels
 defaults write com.apple.dock tilesize -int 28
+
+killall Dock
+
+# Show hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Shown file extensions in Finder
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+killall Finder
