@@ -13,6 +13,10 @@ defaults write com.apple.dock minimize-to-application -bool true
 # Set the icon size of Dock items to 28 pixels
 defaults write com.apple.dock tilesize -int 28
 
+# Lock screen when using bottom left hot corner
+defaults write com.apple.dock wvous-bl-corner -int 13
+defaults write com.apple.dock wvous-bl-modifier -int 0
+
 killall Dock
 
 # Show hidden files in Finder
