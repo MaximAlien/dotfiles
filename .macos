@@ -37,4 +37,34 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 # Use column view in all windows 
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
+FINDER_PLIST_PATH=~/Library/Preferences/com.apple.finder.plist
+PLIST_BUDDY=/usr/libexec/PlistBuddy
+
+# Show item name at the bottom of the icon
+${PLIST_BUDDY} -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom true" ${FINDER_PLIST_PATH}
+
+# When reordering icons, arrange them by grid
+ARRANGEMENT_TYPE=grid
+${PLIST_BUDDY} -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy ${ARRANGEMENT_TYPE}" ${FINDER_PLIST_PATH}
+${PLIST_BUDDY} -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy ${ARRANGEMENT_TYPE}" ${FINDER_PLIST_PATH}
+${PLIST_BUDDY} -c "Set :StandardViewSettings:IconViewSettings:arrangeBy ${ARRANGEMENT_TYPE}" ${FINDER_PLIST_PATH}
+
+# Show item information
+SHOULD_SHOW_ITEM_INFO=1
+${PLIST_BUDDY} -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo ${SHOULD_SHOW_ITEM_INFO}" ${FINDER_PLIST_PATH}
+${PLIST_BUDDY} -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo ${SHOULD_SHOW_ITEM_INFO}" ${FINDER_PLIST_PATH}
+${PLIST_BUDDY} -c "Set :StandardViewSettings:IconViewSettings:showItemInfo ${SHOULD_SHOW_ITEM_INFO}" ${FINDER_PLIST_PATH}
+
+# Change grid spacing for icons
+GRID_SPACING=50
+${PLIST_BUDDY} -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing ${GRID_SPACING}" ${FINDER_PLIST_PATH}
+${PLIST_BUDDY} -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing ${GRID_SPACING}" ${FINDER_PLIST_PATH}
+${PLIST_BUDDY} -c "Set :StandardViewSettings:IconViewSettings:gridSpacing ${GRID_SPACING}" ${FINDER_PLIST_PATH}
+
+# Change size of icons
+ICON_SIZE=50
+${PLIST_BUDDY} -c "Set :DesktopViewSettings:IconViewSettings:iconSize ${ICON_SIZE}" ${FINDER_PLIST_PATH}
+${PLIST_BUDDY} -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize ${ICON_SIZE}" ${FINDER_PLIST_PATH}
+${PLIST_BUDDY} -c "Set :StandardViewSettings:IconViewSettings:iconSize ${ICON_SIZE}" ${FINDER_PLIST_PATH}
+
 killall Finder
