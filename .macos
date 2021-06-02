@@ -17,6 +17,12 @@ defaults write com.apple.dock tilesize -int 28
 defaults write com.apple.dock wvous-bl-corner -int 13
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
+# Do not show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Autohide Dock
+defaults write com.apple.dock autohide -bool true
+
 killall Dock
 
 # Show hidden files in Finder
