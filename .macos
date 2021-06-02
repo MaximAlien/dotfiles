@@ -34,4 +34,7 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # If searching in Finder, search only in current folder
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
+# Use column view in all windows 
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
 killall Finder
