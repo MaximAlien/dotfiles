@@ -30,50 +30,74 @@ done
 cd ~/.shell/daemons/activity_maintainer/
 sudo ./start.sh
 
-APPLICATIONS=( \
-alfred \
-visual-studio-code \
-skype \
-sourcetree \
-spotify \
-virtualbox \
-pycharm-ce \
-wireshark \
-vlc \
-openoffice \
-telegram \
-rescuetime \
-sublime-text \
-powershell \
-viber \
-airserver \
-android-file-transfer \
-macdown \
-gpac \
-selfcontrol \
-machoview \
-android-studio \
-angry-ip-scanner \
-hex-fiend \
-cmake \
-db-browser-for-sqlite \
-iterm2 \
-grandperspective \
-hopper-debugger-server \
-ios-app-signer \
-google-chrome \
-)
+installUtilities() {
+    echo "Installing utilities..."
 
-for APPLICATION in ${APPLICATIONS[*]}
-do
-    brew reinstall --cask ${APPLICATION}
-done
+    UTILITIES=( \
+        swiftlint \
+    )
 
-UTILITIES=( \
-swiftlint \
-)
+    for UTILITIY in ${UTILITIES[*]}
+    do
+        brew reinstall ${UTILITIY}
+    done
 
-for UTILITIY in ${UTILITIES[*]}
-do
-    brew reinstall ${UTILITIY}
-done
+    echo "Finished installing utilities."
+}
+
+installApplications() {
+    echo "Installing applications..."
+
+    APPLICATIONS=( \
+        alfred \
+        visual-studio-code \
+        skype \
+        sourcetree \
+        spotify \
+        virtualbox \
+        pycharm-ce \
+        wireshark \
+        vlc \
+        openoffice \
+        telegram \
+        rescuetime \
+        sublime-text \
+        powershell \
+        viber \
+        airserver \
+        android-file-transfer \
+        macdown \
+        gpac \
+        selfcontrol \
+        machoview \
+        android-studio \
+        angry-ip-scanner \
+        hex-fiend \
+        cmake \
+        db-browser-for-sqlite \
+        iterm2 \
+        grandperspective \
+        hopper-debugger-server \
+        ios-app-signer \
+        google-chrome \
+    )
+
+    for APPLICATION in ${APPLICATIONS[*]}
+    do
+        brew reinstall --cask ${APPLICATION}
+    done
+
+    echo "Finished installing applications."
+}
+
+case $1 in
+"u")
+    installUtilities
+    ;;
+"a")
+    installApplications
+    ;;
+*)
+    echo "Dependencies will not be installed."
+    ;;
+esac
