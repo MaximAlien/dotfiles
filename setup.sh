@@ -5,19 +5,19 @@ set -x
 
 CURRENT_PATH="$(pwd)"
 DOTFILES=( \
-.shell \
-.aliases \
-.bash_profile \
-.bashrc \
-.common \
-.macos \
-.nanorc \
-.zprofile \
-.zshrc \
-.gitconfig \
-.gitignore_global \
-.gitcommit_template \
-.swiftlint.yml \
+    .shell \
+    .aliases \
+    .bash_profile \
+    .bashrc \
+    .common \
+    .macos \
+    .nanorc \
+    .zprofile \
+    .zshrc \
+    .gitconfig \
+    .gitignore_global \
+    .gitcommit_template \
+    .swiftlint.yml \
 )
 
 for DOTFILE in ${DOTFILES[*]}
