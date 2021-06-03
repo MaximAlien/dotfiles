@@ -2,6 +2,13 @@
     name = Maxim Makhun
     email = maxim.makhun@gmail.com
 [core]
-    excludesfile = /Users/maximmakhun/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [commit]
-    template = /Users/maximmakhun/.gitcommit_template
+    template = ~/.gitcommit_template
+[init]
+    defaultBranch = main
+[color]
+    ui = auto
+[alias]
+    whoami = config user.email
+    aliases = config --get-regexp alias
