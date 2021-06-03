@@ -6,9 +6,23 @@
 [commit]
     template = ~/.gitcommit_template
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [color]
     ui = auto
+[color "status"]
+    # Available colors: 
+    # - normal
+    # - black
+    # - red
+    # - green
+    # - yellow
+    # - blue
+    # - magenta
+    # - cyan
+    # - white
+    added = green
+    changed = yellow
+    untracked = red
 [alias]
     whoami = config user.email
     aliases = config --get-regexp alias
