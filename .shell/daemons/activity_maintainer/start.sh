@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# In case if deamon doesn't start make sure to give Full Disk Permission in System Preferences -> Security & Privacy -> Privacy.
 set -e
 set -x
 
