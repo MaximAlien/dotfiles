@@ -1,5 +1,5 @@
 disabled_rules:
-  # It's fine to have line length more than 120 symbols
+  # It's fine to have line length more than 120 symbols.
   - line_length
 
   # It's fine to name variables with less than 3 symbols.
