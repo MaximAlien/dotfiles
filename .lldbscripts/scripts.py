@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 def __lldb_init_module(debugger, dict):
-    help = "Available LLDB commands:\n\t- json JSON/Data\n\t- validate UITableView/UICollectionView"
+    help = "Available LLDB commands:\n\t- json JSON/Data\n\t- validate UITableView/UICollectionView\n\t- ats"
 
     print(help)
 
@@ -69,3 +69,23 @@ def __lldb_init_module(debugger, dict):
 
     validate_lldb_command = "command regex validate 's/(.+)/expr {} /'".format(validate_swift_command)
     debugger.HandleCommand(validate_lldb_command)
+
+    ats_swift_command = """
+        if let infoPlistFile = Bundle.main.url(forResource: "Info", withExtension: "plist") {
+            do {
+                let infoPlistData = try Data(contentsOf: infoPlistFile)
+                if let properties = try PropertyListSerialization.propertyList(from: infoPlistData,
+                                                                               options: [],
+                                                                               format: nil) as? [String: Any] {
+                    print("Apple Transport Security: \(properties["NSAppTransportSecurity"] ?? "Not set.")")
+                }
+            } catch {
+                print("Error occured: \(error.localizedDescription)")
+            }
+        } else {
+            print("Info.plist file was not found.")
+        }
+    """
+
+    ats_lldb_command = "command alias ats expr -l Swift -O -- {}".format(ats_swift_command)
+    debugger.HandleCommand(ats_lldb_command)
