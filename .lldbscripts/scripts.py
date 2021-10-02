@@ -1,8 +1,14 @@
 #!/usr/bin/python
 
 def __lldb_init_module(debugger, dict):
-    help = "Available LLDB commands:\n\t- json JSON/Data\n\t- validate UITableView/UICollectionView\n\t- ats"
-
+    help = """Available LLDB commands:
+- json JSON/Data
+- validate UITableView/UICollectionView
+- ats
+- Objective-C exceptions breakpoint: (lldb) br set --name objc_exception_throw
+- Swift errors breakpoint: (lldb) br set --name swift_willThrow
+- Unsatisfiable layout constraints breakpoint: (lldb) br set --name UIViewAlertForUnsatisfiableConstraints
+"""
     print(help)
 
     json_swift_command = """
