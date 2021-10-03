@@ -82,6 +82,8 @@ def __lldb_init_module(debugger, dict):
     debugger.HandleCommand(validate_lldb_command)
 
     ats_swift_command = """
+        import UIKit
+        
         if let infoPlistFile = Bundle.main.url(forResource: "Info", withExtension: "plist") {
             do {
                 let infoPlistData = try Data(contentsOf: infoPlistFile)
