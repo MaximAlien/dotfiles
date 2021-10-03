@@ -30,6 +30,9 @@ done
 cd ~/.shell/daemons/activity_maintainer/
 sudo ./start.sh
 
+# To view Xcode code snippets use Command + Shift + L
+cp -r ${CURRENT_PATH}/snippets/*.codesnippet ~/Library/Developer/Xcode/UserData/CodeSnippets/
+
 installUtilities() {
     echo "Installing utilities..."
 
