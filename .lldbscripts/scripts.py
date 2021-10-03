@@ -8,6 +8,7 @@ def __lldb_init_module(debugger, dict):
 - Objective-C exceptions breakpoint: (lldb) br set --name objc_exception_throw
 - Swift errors breakpoint: (lldb) br set --name swift_willThrow
 - Unsatisfiable layout constraints breakpoint: (lldb) br set --name UIViewAlertForUnsatisfiableConstraints
+- descr Class/Struct instance
 """
     print(help)
 
@@ -83,7 +84,7 @@ def __lldb_init_module(debugger, dict):
 
     ats_swift_command = """
         import UIKit
-        
+
         if let infoPlistFile = Bundle.main.url(forResource: "Info", withExtension: "plist") {
             do {
                 let infoPlistData = try Data(contentsOf: infoPlistFile)
@@ -102,3 +103,26 @@ def __lldb_init_module(debugger, dict):
 
     ats_lldb_command = "command alias ats expr -l Swift -O -- {}".format(ats_swift_command)
     debugger.HandleCommand(ats_lldb_command)
+
+    descr_swift_command = """
+        let input = %1
+
+        let mirroredObject = Mirror(reflecting: input)
+        let description = NSMutableString()
+        description.append("\(type(of: input)):\\n")
+        
+        if !mirroredObject.children.isEmpty {
+            for (_, attribute) in mirroredObject.children.enumerated() {
+                if let propertyName = attribute.label {
+                    description.append("Property: \(propertyName), Value: \(attribute.value)\\n")
+                }
+            }
+
+            print("\(description)")
+        } else {
+            print("No properties.")
+        }
+    """
+
+    descr_lldb_command = "command regex descr 's/(.+)/expr {} /'".format(descr_swift_command)
+    debugger.HandleCommand(descr_lldb_command)
