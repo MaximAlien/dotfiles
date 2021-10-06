@@ -68,8 +68,9 @@ def __lldb_init_module(debugger, dict):
                 print("Registered cell classes: \(tableView.value(forKey: "_cellClassDict") ?? "Not set").")
                 print("Registered nibs: \(tableView.value(forKey: "_nibMap") ?? "Not set").")
             } else if let collectionView = input as? UICollectionView {
-                print("UITableViewDelegate: \((collectionView.delegate != nil) ? "Set" : "Not set").")
-                print("UITableViewDataSource: \((collectionView.dataSource != nil) ? "Set" : "Not set").")
+                print("UICollectionViewDelegate: \((collectionView.delegate != nil) ? "Set" : "Not set").")
+                print("UICollectionViewDataSource: \((collectionView.dataSource != nil) ? "Set" : "Not set").")
+                print("UICollectionViewDataSourcePrefetching: \((collectionView.prefetchDataSource != nil) ? "Set" : "Not set").")
                 
                 print("Registered cell classes: \(collectionView.value(forKey: "_cellClassDict") ?? "Not set").")
                 print("Registered nibs: \(collectionView.value(forKey: "_nibMap") ?? "Not set").")
