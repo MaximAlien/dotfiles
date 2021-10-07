@@ -2,13 +2,13 @@
 
 def __lldb_init_module(debugger, dict):
     help = """Available LLDB commands:
-- json JSON/Data
+- json String/Data
 - validate UITableView/UICollectionView
 - ats
+- descr Class/Struct
 - Objective-C exceptions breakpoint: (lldb) br set --name objc_exception_throw
 - Swift errors breakpoint: (lldb) br set --name swift_willThrow
 - Unsatisfiable layout constraints breakpoint: (lldb) br set --name UIViewAlertForUnsatisfiableConstraints
-- descr Class/Struct instance
 """
     print(help)
 
