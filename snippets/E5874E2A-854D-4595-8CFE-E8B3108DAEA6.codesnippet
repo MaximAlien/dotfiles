@@ -9,27 +9,17 @@
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>extension UICollectionView: ReusableView {
+	<string>DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
     
-    func dequeueReusableCell&lt;T: UICollectionViewCell&gt;(for indexPath: IndexPath) -&gt; T {
-        guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            fatalError("Failed to dequeue cell with identifier: \(T.reuseIdentifier).")
-        }
-        
-        return cell
-    }
-}
-</string>
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>0F4FE562-03CF-434A-A2EF-76E566C2CBA2</string>
+	<string>E5874E2A-854D-4595-8CFE-E8B3108DAEA6</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
-	<key>IDECodeSnippetPlatformFamily</key>
-	<string>iphoneos</string>
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>UICollectionView.dequeueReusableCell(for:)</string>
+	<string>DispatchQueue with delay</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

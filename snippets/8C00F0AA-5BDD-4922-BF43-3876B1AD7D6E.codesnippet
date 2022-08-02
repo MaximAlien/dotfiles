@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>class Observable: NSObject {
+
+    @objc dynamic var observableValue: String = ""
+
+    func update() {
+        observableValue = UUID().uuidString
+    }
+}
+
+class Observer: NSObject {
+
+    @objc var observable: Observable
+
+    var observation: NSKeyValueObservation?
+
+    init(_ observable: Observable) {
+        self.observable = observable
+        
+        super.init()
+        
+        observation = observe(
+            \.observable.observableValue,
+            options: [.old, .new]
+        ) { object, change in
+            print("Value changed from: \(change.oldValue!), updated to: \(change.newValue!)")
+        }
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>8C00F0AA-5BDD-4922-BF43-3876B1AD7D6E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>KVO: Observe Value For Keypath</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

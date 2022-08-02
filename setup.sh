@@ -38,6 +38,7 @@ installUtilities() {
 
     UTILITIES=( \
         swiftlint \
+        p7zip \
     )
 
     for UTILITIY in ${UTILITIES[*]}

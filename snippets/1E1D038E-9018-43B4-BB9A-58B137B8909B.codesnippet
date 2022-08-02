@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>do {
+    let decodedObject = try JSONDecoder().decode(UsersReponse.self, from: data)
+    print("Decoded object: \(decodedObject).")
+} catch DecodingError.dataCorrupted(let context) {
+    print("Data corrupted error occured: \(context.debugDescription).")
+} catch DecodingError.keyNotFound(let key, let context) {
+    print("Key not found error occured for key \(key): \(context.debugDescription).")
+} catch DecodingError.typeMismatch(let type, let context) {
+    print("Type mismatch error occured for type \(type): \(context.debugDescription).")
+} catch DecodingError.valueNotFound(let type, let context) {
+    print("Value not found error occured for type: \(type): \(context.debugDescription).")
+} catch {
+    print("Unknown error occured: \(error).")
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>1E1D038E-9018-43B4-BB9A-58B137B8909B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>JSONDecoder with error handling</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

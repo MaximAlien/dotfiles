@@ -9,27 +9,25 @@
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>extension UICollectionView: ReusableView {
-    
-    func dequeueReusableCell&lt;T: UICollectionViewCell&gt;(for indexPath: IndexPath) -&gt; T {
-        guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            fatalError("Failed to dequeue cell with identifier: \(T.reuseIdentifier).")
-        }
-        
-        return cell
-    }
-}
-</string>
+	<string>let view = UIView()
+view.backgroundColor = .red
+view.translatesAutoresizingMaskIntoConstraints = false
+self.view.addSubview(view)
+
+NSLayoutConstraint.activate([
+    view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10.0),
+    view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10.0),
+    view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 10.0),
+    view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10.0)
+])</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>0F4FE562-03CF-434A-A2EF-76E566C2CBA2</string>
+	<string>D1D5CE02-A290-4BFC-9352-413C0CB2E7E4</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
-	<key>IDECodeSnippetPlatformFamily</key>
-	<string>iphoneos</string>
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>UICollectionView.dequeueReusableCell(for:)</string>
+	<string>NSLayoutAnchor</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>struct User: Codable {
+    
+    var firstname: String
+    var lastname: String
+    var age: Int?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        firstname = try container.decode(String.self, forKey: .firstname)
+        lastname = try container.decode(String.self, forKey: .lastname)
+        age = try container.decodeIfPresent(Int.self, forKey: .age)
+    }
+}
+
+let userString = """
+    {
+    "firstname": "John",
+    "lastname": "Doe"
+    }
+    """
+
+if let user: User = try? JSONDecoder().decode(User.self, from: userString.data(using: .utf8)!) {
+    print("User: \(user)")
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5AE9A2B3-0C14-41E4-A965-67792821F86E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>JSONDecoder</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

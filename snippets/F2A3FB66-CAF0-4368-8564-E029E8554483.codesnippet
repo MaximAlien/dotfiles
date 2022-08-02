@@ -9,27 +9,17 @@
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>extension UICollectionView: ReusableView {
-    
-    func dequeueReusableCell&lt;T: UICollectionViewCell&gt;(for indexPath: IndexPath) -&gt; T {
-        guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            fatalError("Failed to dequeue cell with identifier: \(T.reuseIdentifier).")
-        }
-        
-        return cell
-    }
-}
-</string>
+	<string>if let json = try? JSONSerialization.jsonObject(with: &lt;#data#&gt;, options: []) as? [String: Any] {
+
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>0F4FE562-03CF-434A-A2EF-76E566C2CBA2</string>
+	<string>F2A3FB66-CAF0-4368-8564-E029E8554483</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
-	<key>IDECodeSnippetPlatformFamily</key>
-	<string>iphoneos</string>
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>UICollectionView.dequeueReusableCell(for:)</string>
+	<string>JSONSerialization</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
