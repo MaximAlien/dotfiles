@@ -27,6 +27,8 @@ shell_startup() {
     fi
     
     echo -e "${CYAN_COLOR}Starting ${SHELL}...${NO_COLOR}"
+
+    chmod u+x ~/.shell/disk_info.swift
 }
 
 current_folder_info() {
@@ -157,4 +159,39 @@ reset_xcode() {
     swift package reset
     swift package update
     open /Applications/Xcode.app
+}
+
+cleanup() {
+    echo "Before cleanup:"
+    disk_info
+
+    echo "Performing cleanup..."
+    
+    # Remove Xcode cache
+    rm -rf ~/Library/Developer/Xcode/DerivedData/*
+    rm -rf ~/Library/Caches/com.apple.dt.Xcode/*
+
+    # Remove CocoaPods cache
+    rm -rf ~/Library/Caches/CocoaPods
+
+    # Remove SPM cache
+    rm -rf /Users/$USER_NAME/Library/Caches/org.swift.swiftpm/repositories
+
+    # Remove Carthage cache
+    rm -rf ~/Library/Caches/org.carthage.CarthageKit
+    rm -rf ~/Library/Caches/carthage
+
+    # Remove all contents from iOS Simulators and its cache
+    xcrun simctl erase all
+    xcrun simctl delete unavailable
+    rm -rf ~/Library/Developer/CoreSimulator/Caches/dyld/
+
+    # Remove Spotify cache
+    rm -rf /Users/$USER_NAME/Library/Caches/com.spotify.client/Storage/*
+
+    # Manually check:
+    # $ /Users/maksimmakhun/Library/Developer/Xcode/iOS\ DeviceSupport
+
+    echo "After cleanup:"
+    disk_info
 }
