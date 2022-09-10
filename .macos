@@ -37,6 +37,9 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 # Use column view in all windows 
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
+# Show touches in iOS Simulator
+defaults write com.apple.iphonesimulator ShowSingleTouches 1
+
 FINDER_PLIST_PATH=~/Library/Preferences/com.apple.finder.plist
 PLIST_BUDDY=/usr/libexec/PlistBuddy
 
