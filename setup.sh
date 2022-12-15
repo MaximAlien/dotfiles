@@ -39,6 +39,7 @@ installUtilities() {
     UTILITIES=( \
         swiftlint \
         p7zip \
+        imagemagick \
     )
 
     for UTILITIY in ${UTILITIES[*]}
