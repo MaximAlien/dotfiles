@@ -195,3 +195,26 @@ cleanup() {
     echo "After cleanup:"
     disk_info
 }
+
+convert() {
+    if [[ $# != 2 ]]; then
+        echo "Example usage: $ convert conversion_file converted_file"
+        return
+    fi
+
+    CONVERSION_FILE=$1
+    LOWERCASED_CONVERSION_FILE=$(echo $CONVERSION_FILE | tr '[:upper:]' '[:lower:]')
+    shift
+
+    CONVERTED_FILE=$1
+    LOWERCASED_CONVERTED_FILE=$(echo $CONVERTED_FILE | tr '[:upper:]' '[:lower:]')
+    shift
+
+    if [[ ${LOWERCASED_CONVERSION_FILE} == *.heic && ${LOWERCASED_CONVERTED_FILE} == *.jpg ]]; then
+        /usr/local/bin/convert ${CONVERSION_FILE} ${CONVERTED_FILE}
+    elif [[ ${LOWERCASED_CONVERSION_FILE} == *.pdf && ${LOWERCASED_CONVERTED_FILE} == *.jpg ]]; then
+        /usr/local/bin/convert ${CONVERSION_FILE} ${CONVERTED_FILE}
+    else
+        echo "Unsupported file formats."
+    fi
+}
