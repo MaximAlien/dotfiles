@@ -18,6 +18,8 @@ DOTFILES=( \
     .gitignore_global \
     .gitcommit_template \
     .swiftlint.yml \
+    .lldbinit \
+    .lldbscripts \
 )
 
 for DOTFILE in ${DOTFILES[*]}
@@ -31,7 +33,9 @@ cd ~/.shell/daemons/activity_maintainer/
 sudo ./start.sh
 
 # To view Xcode code snippets use Command + Shift + L
-cp -r ${CURRENT_PATH}/snippets/*.codesnippet ~/Library/Developer/Xcode/UserData/CodeSnippets/
+CODE_SNIPPETS_FOLDER=~/Library/Developer/Xcode/UserData/CodeSnippets/
+mkdir -p ${CODE_SNIPPETS_FOLDER}
+cp -r ${CURRENT_PATH}/snippets/*.codesnippet ${CODE_SNIPPETS_FOLDER}
 
 installUtilities() {
     echo "Installing utilities..."

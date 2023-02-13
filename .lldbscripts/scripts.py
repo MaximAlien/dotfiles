@@ -2,13 +2,13 @@
 
 def __lldb_init_module(debugger, dict):
     help = """Available LLDB commands:
-- json String/Data
-- validate UITableView/UICollectionView
-- ats
-- descr Class/Struct
-- Objective-C exceptions breakpoint: (lldb) br set --name objc_exception_throw
-- Swift errors breakpoint: (lldb) br set --name swift_willThrow
-- Unsatisfiable layout constraints breakpoint: (lldb) br set --name UIViewAlertForUnsatisfiableConstraints
+- (lldb) json String/Data - prints JSON representation of String or Data instances
+- (lldb) validate UITableView/UICollectionView - performs validation of UITableView or UICollectionView instances
+- (lldb) ats - check whether NSAppTransportSecurity is present in Info.plist
+- (lldb) descr Class/Struct - print description of a struct or class
+- (lldb) br set --name objc_exception_throw - set Objective-C exceptions breakpoint
+- (lldb) br set --name swift_willThrow - set Swift errors breakpoint
+- (lldb) br set --name UIViewAlertForUnsatisfiableConstraints - set unsatisfiable layout constraints breakpoint
 """
     print(help)
 
