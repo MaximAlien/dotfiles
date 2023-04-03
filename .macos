@@ -40,6 +40,12 @@ defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 # Show touches in iOS Simulator
 defaults write com.apple.iphonesimulator ShowSingleTouches 1
 
+# Speed-up cursor movement
+defaults write NSGlobalDomain KeyRepeat -int 1
+
+# Disable natural scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+
 FINDER_PLIST_PATH=~/Library/Preferences/com.apple.finder.plist
 PLIST_BUDDY=/usr/libexec/PlistBuddy
 
