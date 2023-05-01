@@ -76,4 +76,7 @@ ${PLIST_BUDDY} -c "Set :DesktopViewSettings:IconViewSettings:iconSize ${ICON_SIZ
 ${PLIST_BUDDY} -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize ${ICON_SIZE}" ${FINDER_PLIST_PATH}
 ${PLIST_BUDDY} -c "Set :StandardViewSettings:IconViewSettings:iconSize ${ICON_SIZE}" ${FINDER_PLIST_PATH}
 
+# Show dots in editor
+defaults write com.apple.dt.Xcode DVTTextShowInvisibleCharacters 1
+
 killall Finder
