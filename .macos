@@ -80,3 +80,32 @@ ${PLIST_BUDDY} -c "Set :StandardViewSettings:IconViewSettings:iconSize ${ICON_SI
 defaults write com.apple.dt.Xcode DVTTextShowInvisibleCharacters 1
 
 killall Finder
+
+# Show analog clock
+# defaults write com.apple.menuextra.clock IsAnalog -bool true
+
+# Get current date format
+# defaults read com.apple.menuextra.clock "DateFormat"
+
+# Flash time separators
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool true
+
+# 12-hour format
+defaults write -g AppleICUForce12HourTime -bool true
+
+# 24-hour format
+# defaults write com.apple.menuextra.clock.plist Show24Hour -bool true
+
+# Show seconds
+defaults write com.apple.menuextra.clock.plist ShowSeconds -bool true
+
+# Show AM/PM
+defaults write com.apple.menuextra.clock.plist ShowAMPM -bool true
+
+# Show day of week
+defaults write com.apple.menuextra.clock.plist ShowDayOfWeek -bool true
+
+# Show date
+defaults write com.apple.menuextra.clock.plist ShowDate -int 1
+
+killall ControlCenter
