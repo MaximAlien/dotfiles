@@ -96,7 +96,8 @@ search_all() {
     fi
 
     SEARCH_TERM="$1"
-    FILE_SEARCH_RESULT=$(color $SEARCH_TERM find . -type f -maxdepth 1 -iname "*$SEARCH_TERM*" -print)
+    # To control maximum depth of the search use: -maxdepth 1
+    FILE_SEARCH_RESULT=$(color $SEARCH_TERM find . -type f -iname "*$SEARCH_TERM*" -print)
     FILE_SEARCH_RESULT_COUNT=$(echo $FILE_SEARCH_RESULT | wc -l | xargs)
 
     if [[ $FILE_SEARCH_RESULT ]]; then
@@ -105,7 +106,7 @@ search_all() {
         echo "No files were found which contain: $SEARCH_TERM."
     fi
 
-    FOLDER_SEARCH_RESULT=$(color $SEARCH_TERM find . -type d -maxdepth 1 -iname "*$SEARCH_TERM*" -print)
+    FOLDER_SEARCH_RESULT=$(color $SEARCH_TERM find . -type d -iname "*$SEARCH_TERM*" -print)
     FOLDER_SEARCH_RESULT_COUNT=$(echo $FOLDER_SEARCH_RESULT | wc -l | xargs)
 
     if [[ $FOLDER_SEARCH_RESULT ]]; then
