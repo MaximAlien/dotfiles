@@ -70,7 +70,7 @@ weather_info() {
 }
 
 git_branch_name() {
-    ~/.shell/git_branch_name.swift
+    ~/.shell/git_branch_name.swift $1
 }
 
 color() {
