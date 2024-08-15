@@ -69,6 +69,10 @@ weather_info() {
     ~/.shell/weather_info.swift
 }
 
+git_branch_name() {
+    ~/.shell/git_branch_name.swift
+}
+
 color() {
     if [[ $# == 0 ]]; then
         echo "Example usage: $ color string_you_want_to_highlight ./your_command.sh"

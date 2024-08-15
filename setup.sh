@@ -28,7 +28,7 @@ do
     ln -s ${CURRENT_PATH}/${DOTFILE} ~/${DOTFILE}
 done
 
-# Start activity maintainer deamon
+# Start activity maintainer daemon
 cd ~/.shell/daemons/activity_maintainer/
 sudo ./start.sh
 
