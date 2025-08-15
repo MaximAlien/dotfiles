@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>.handleEvents(
+    receiveSubscription: { _ in
+
+    },
+    receiveOutput: { _ in
+
+    },
+    receiveCompletion: { _ in
+
+    },
+    receiveCancel: {
+
+    },
+    receiveRequest: { _ in
+
+    }
+)</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5F16CF8D-66C5-4A68-A230-F28E969055CC</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SwiftUI debugging</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>handleEvents</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
