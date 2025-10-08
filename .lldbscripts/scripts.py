@@ -9,6 +9,14 @@ def __lldb_init_module(debugger, dict):
 - (lldb) br set --name objc_exception_throw - set Objective-C exceptions breakpoint
 - (lldb) br set --name swift_willThrow - set Swift errors breakpoint
 - (lldb) br set --name UIViewAlertForUnsatisfiableConstraints - set unsatisfiable layout constraints breakpoint
+
+Shortcuts:
+- Command (⌘) + U - Run all tests
+- Command (⌘) + 1, 2, 3, 4, 5, 6, 7, 8, 9 - Open tab on the left
+- Command (⌘) + B - Build
+- Command (⌘) + R - Run
+- Command (⌘) + . - Stop
+- Command (⌘) + Control (⌃) + Shift + L - Wrap lines
 """
     print(help)
 
