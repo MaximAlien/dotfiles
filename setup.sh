@@ -37,6 +37,11 @@ CODE_SNIPPETS_FOLDER=~/Library/Developer/Xcode/UserData/CodeSnippets/
 mkdir -p ${CODE_SNIPPETS_FOLDER}
 cp -r ${CURRENT_PATH}/snippets/*.codesnippet ${CODE_SNIPPETS_FOLDER}
 
+# Enable "Copy path to clipboard" in System Settings > Keyboard > Keyboard Shortcuts > Services.
+SERVICES_FOLDER="${HOME}/Library/Services"
+mkdir -p "${SERVICES_FOLDER}"
+cp -R "${CURRENT_PATH}/workflows/copy-path-to-clipboard.workflow" "${SERVICES_FOLDER}/"
+
 installUtilities() {
     echo "Installing utilities..."
 
